@@ -43,11 +43,13 @@ export default buildConfig({
       format: 'csv',
     }),
 
+    // ----------- FIXED VERCEL BLOB STORAGE -----------
     vercelBlobStorage({
       enabled: true,
 
+      // IMPORTANT: use Media.slug, NOT literal "media"
       collections: {
-        media: true,
+        [Media.slug]: true,
       },
 
       token: process.env.BLOB_READ_WRITE_TOKEN,
@@ -55,7 +57,9 @@ export default buildConfig({
       addRandomSuffix: false,
       cacheControlMaxAge: 365 * 24 * 60 * 60,
 
+      // keep this FALSE (server uploads) → avoids importMap errors
       clientUploads: false,
     }),
+    // --------------------------------------------------
   ],
 })
