@@ -5,6 +5,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import sharp from 'sharp'
 import FormResponses from './collections/FormResponses'
 import { importExportPlugin } from '@payloadcms/plugin-import-export'
@@ -22,6 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+
   collections: [Users, Media, FormResponses],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -40,6 +42,20 @@ export default buildConfig({
       collections: ['form-responses'],
       format: 'csv',
     }),
-    // storage-adapter-placeholder
+
+    vercelBlobStorage({
+      enabled: true,
+
+      collections: {
+        media: true,
+      },
+
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+
+      addRandomSuffix: false,
+      cacheControlMaxAge: 365 * 24 * 60 * 60,
+
+      clientUploads: false,
+    }),
   ],
 })
