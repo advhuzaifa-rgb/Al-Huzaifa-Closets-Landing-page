@@ -1,0 +1,16 @@
+.btn {
+  font-family: var(--font-poppins);
+  background-color: #28201B;
+  border-radius: 8px;
+  font-size:14px;
+  font-weight: 300;
+  color: #EEEEEE;
+  padding: 14px 24px 14px 24px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; 
+  user-select: none;
+  outline: none;
+}

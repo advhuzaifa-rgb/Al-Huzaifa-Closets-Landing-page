@@ -1,0 +1,24 @@
+.btn {
+  font-family: var(--font-poppins);
+  background-color: #ffffff;
+padding: clamp(10px, calc(10px + (7 * ((100vw - 320px) / 1120))), 17px)
+         clamp(29px, calc(29px + (35 * ((100vw - 320px) / 1120))), 64px)
+         clamp(10px, calc(10px + (8 * ((100vw - 320px) / 1120))), 18px)
+         clamp(28px, calc(28px + (36 * ((100vw - 320px) / 1120))), 64px);
+
+  border: 2px solid #64442e;
+  border-radius: 8px;
+  font-size: var(--fs-20);
+  font-weight: 400;
+  cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; 
+  user-select: none;
+  outline: none;
+}
+@media screen and (max-width: 480px) {
+  .btn {
+    font-size: 14px;
+  }
+    
+}

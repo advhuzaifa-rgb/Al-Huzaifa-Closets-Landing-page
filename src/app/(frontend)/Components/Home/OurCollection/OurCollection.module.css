@@ -1,0 +1,187 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+   padding:
+  0
+  clamp(24px, calc(24px + (101 * ((100vw - 320px) / 1120))), 125px);
+
+}
+.MainContainer{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+    gap: clamp(50px, calc(50px + (20 * ((100vw - 320px) / 1120))), 70px);
+
+}
+.TopContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+.TopContainer h3{
+    font-size: var(--fs-34);
+    font-weight: 400;
+    color: #414141;
+    line-height: 140%;
+    font-family: var(--font-pp-hatton);
+}
+.TopContainer p{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    color: #414141;
+    font-family: var(--font-poppins);
+    line-height: 140%;
+    width: 50%;
+}
+.MiddleContainer{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+   gap: clamp(50px, calc(50px + (60 * ((100vw - 320px) / 1120))), 110px);
+
+}
+.MiddleTop, .MiddleCenter, .MiddleBottom{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+   gap: clamp(50px, calc(50px + (20 * ((100vw - 320px) / 1120))), 70px);
+
+}
+.MiddleOne, .MiddleTwo{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: 10px;
+     width: 100%;
+    max-width: 800px;
+}
+.MiddleOne img, .MiddleTwo img{
+    width: 100%;
+    max-width: 802px;
+    /* height: 100%; */
+    max-height: 800px;
+}
+.MiddleOne h3, .MiddleTwo h3{
+    font-size: 22px;
+    font-weight: 400;
+    color: #414141;
+    line-height: 140%;
+    font-family: var(--font-poppins);
+}
+.line{
+    width: 15%;
+    height: 1px;
+    background-color: #414141;
+}
+.MiddleOne p, .MiddleTwo p{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    color: #414141;
+    font-family: var(--font-poppins);
+    line-height: 140%;
+}
+.BottomContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  padding-top: clamp(0px, calc(0px + (30 * ((100vw - 320px) / 1120))), 30px);
+
+}
+.Button{
+   padding:
+  clamp(7.5px, calc(7.5px + (7.5 * ((100vw - 320px) / 1120))), 15px)
+  clamp(24.5px, calc(24.5px + (43.5 * ((100vw - 320px) / 1120))), 68px);
+
+    width: fit-content;
+    background-color: #62442D;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 4px;
+    font-family: var(--font-poppins);
+    font-size: var(--fs-16);
+    cursor: pointer;
+}
+@media (max-width: 640px) {
+    .main{
+     padding: 0 24px;
+    }
+    .TopContainer{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .TopContainer p{
+        width: 100%;
+        font-size: 14px;
+    }
+    .TopContainer h3{
+        font-size: 22px;
+    }
+    .MiddleContainer{
+        gap: 50px;
+    }
+    .MiddleTop, .MiddleCenter, .MiddleBottom{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .MiddleOne h3, .MiddleTwo h3{
+        font-size: 18px;
+    }
+    .MiddleOne p, .MiddleTwo p{
+        font-size: 14px;
+    }
+    .Button{
+        font-size: 14px;
+        padding: 7.5px 24.5px;
+    }
+    .MiddleOne img, .MiddleTwo img{
+        height: 100%;
+    }
+}
+@media (min-width:641px) and (max-width: 920px) {
+    .MiddleOne img, .MiddleTwo img{
+ 
+       height: 291px;
+       object-fit: cover;
+       object-position: center;
+    }
+     .MiddleOne, .MiddleTwo {
+        width: 100%;
+     }
+     .MiddleContainer{
+        gap: 40px;
+     }
+      .MiddleTop, .MiddleCenter, .MiddleBottom{
+         gap: 40px;
+      }
+}
+@media (min-width: 921px) and (max-width: 1200px) {
+     .MiddleOne img, .MiddleTwo img{
+ 
+       height: 391px;
+       object-fit: cover;
+       object-position: center;
+    }
+      .MiddleOne, .MiddleTwo {
+        width: 100%;
+     }
+    
+}
+@media (min-width: 1201px) and (max-width: 1600px) {
+     .MiddleOne img, .MiddleTwo img{
+ 
+       height: 491px;
+       object-fit: cover;
+       object-position: center;
+    }
+      .MiddleOne, .MiddleTwo {
+        width: 100%;
+     }
+    
+}

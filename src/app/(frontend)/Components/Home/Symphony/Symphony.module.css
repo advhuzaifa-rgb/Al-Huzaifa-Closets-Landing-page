@@ -1,0 +1,61 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+   padding:
+  clamp(80px, calc(80px + (66 * ((100vw - 320px) / 1120))), 146px)
+  clamp(24px, calc(24px + (101 * ((100vw - 320px) / 1120))), 125px)
+  clamp(80px, calc(80px + (66 * ((100vw - 320px) / 1120))), 146px)
+  clamp(24px, calc(24px + (101 * ((100vw - 320px) / 1120))), 125px);
+
+}
+.MainContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+
+
+}
+.Left{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+.Left h3{
+    font-size: var(--fs-34);
+    font-weight: 400;
+    color: #414141;
+    line-height: 140%;
+    width: 50%;
+    font-family: var(--font-pp-hatton);
+}
+
+.Right{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+.Right p{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    color: #414141;
+    font-family: var(--font-poppins);
+    line-height: 140%;
+}
+@media (max-width: 640px) {
+   .main{
+    padding: 80px 24px;
+   }
+   .MainContainer{
+    flex-direction: column;
+    justify-content: left;
+    gap: 20px;
+   }
+   .Left h3{
+    width: 100%;
+   }
+}

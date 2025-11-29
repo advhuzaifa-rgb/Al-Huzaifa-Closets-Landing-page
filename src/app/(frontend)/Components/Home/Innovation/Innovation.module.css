@@ -1,0 +1,127 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+   padding:
+  clamp(80px, calc(80px + (70 * ((100vw - 320px) / 1120))), 150px)
+  clamp(24px, calc(24px + (101 * ((100vw - 320px) / 1120))), 125px)
+  clamp(0px, calc(80px - (80 * ((100vw - 320px) / 1120))), 80px)
+  clamp(24px, calc(24px + (101 * ((100vw - 320px) / 1120))), 125px);
+
+}
+.MainContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+   
+}
+.Left{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+    gap: clamp(20px, calc(20px + (10 * ((100vw - 320px) / 1120))), 30px);
+
+}
+.Left h3{
+    font-size: var(--fs-34);
+    font-weight: 400;
+    color: #414141;
+    line-height: 140%;
+    width: 50%;
+    font-family: var(--font-pp-hatton);
+
+}
+.Left p{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    color: #414141;
+    font-family: var(--font-poppins);
+    line-height: 140%;
+    width: 70%;
+}
+.Right{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    flex-direction: column;
+    gap: clamp(14px, calc(14px + (15 * ((100vw - 320px) / 1120))), 29px);
+
+}
+.RightTop, .RightMiddle, .RightBottom{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+   gap: clamp(14px, calc(14px + (25 * ((100vw - 320px) / 1120))), 39px);
+
+}
+.RightTopOne, .RightTopTwo, .RightMiddleOne, .RightMiddleTwo, .RightBottomOne{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 352px;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 40px 25px;
+    border: 1px solid #414141;
+    border-radius: 12px;
+}
+.RightTopOne p, .RightTopTwo p, .RightMiddleOne p, .RightMiddleTwo p, .RightBottomOne p{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    color: #414141;
+    font-family: var(--font-poppins);
+    line-height: 140%;
+
+}
+.RightTopOne svg, .RightTopTwo svg, .RightMiddleOne svg, .RightMiddleTwo svg, .RightBottomOne svg{
+    width: 100%;
+    height: 100%;
+    max-width: 32px;
+    max-height: 32px;
+}
+@media (max-width: 640px) {
+   .main{
+    padding: 80px 24px;
+   }
+   .MainContainer{
+    flex-direction: column;
+    justify-content: left;
+    gap: 40px;
+   }
+   .Left h3{
+    width: 100%;
+    font-size: 22px;
+   }
+   .Left p{
+    width: 100%;
+    font-size: 14px;
+   }
+   .Left{
+    gap: 20px;
+   }
+   .Right{
+    gap: 20px;
+   }
+   .RightTop, .RightMiddle, .RightBottom{
+    flex-direction: column;
+    gap: 20px;
+   }
+   .RightTopOne, .RightTopTwo, .RightMiddleOne, .RightMiddleTwo, .RightBottomOne{
+    max-width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 19px 32px;
+   }
+   .RightTopOne p, .RightTopTwo p, .RightMiddleOne p, .RightMiddleTwo p, .RightBottomOne p{
+    font-size: 14px;
+   
+
+}
+}

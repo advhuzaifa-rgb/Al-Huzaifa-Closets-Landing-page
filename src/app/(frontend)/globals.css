@@ -1,0 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+@font-face {
+  font-family: 'PP Hatton';
+  src: url('/fonts/PPHatton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Modernline';
+  src: url('/fonts/modernline-personal-use.bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-pp-hatton: 'PP Hatton', serif;
+  --font-modernline: 'Modernline', cursive;
+ --fs-34: clamp(1.38rem, 0.76vi + 1.21rem, 2.13rem);
+ --fs-16: clamp(0.88rem, 0.13vi + 0.85rem, 1rem);
+ --fs-56: clamp(1.38rem, 2.15vi + 0.92rem, 3.5rem);
+ --fs-68: clamp(1.5rem, 2.78vi + 0.91rem, 4.25rem);
+  --color-bg: #f5f5f5;
+  --color-text: #222;
+  --color-accent: #0070f3;
+
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-poppins); /* default */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
