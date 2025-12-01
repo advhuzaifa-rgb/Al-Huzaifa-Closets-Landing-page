@@ -20,7 +20,12 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
-      baseDir: path.resolve(dirname),
+      // The generated import map for the Payload admin lives in the
+      // Next `app/(payload)/admin` directory in this project, so point
+      // the baseDir there. This keeps server-side importMap lookups in
+      // sync with the generated client import map and prevents missing
+      // component errors that can cause the admin UI to render blank.
+      baseDir: path.resolve(dirname, 'app', '(payload)'),
     },
   },
 
