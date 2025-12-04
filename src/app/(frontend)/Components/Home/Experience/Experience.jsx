@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Experience.module.css'
 import Image from 'next/image'
-import leftimg from './1.png'
+import leftimg from './1.avif'
 
 const Experience = () => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './OurCollection.module.css'
 import Image from 'next/image'
-import one from './1.png'
-import two from './2.png'
-import three from './3.png'
-import four from './4.png'
-import five from './5.png'
-import six from './6.png'
+import one from './1.avif'
+import two from './2.avif'
+import three from './3.avif'
+import four from './4.avif'
+import five from './5.avif'
+import six from './6.avif'
 
 const OurCollection = () => {
   return (
