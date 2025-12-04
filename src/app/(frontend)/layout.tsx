@@ -1,8 +1,7 @@
 import React from 'react'
 import './globals.css'
 import PopUpWrapper from './PopUpWrapper'
-
-
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata = {
   description: 'Al Huzaifa Furniture - Crafting Bespoke Furniture with Excellence and Precision',
@@ -27,14 +26,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-       
-      </head>
+      <head></head>
       <body>
         <PopUpWrapper>
           <main>{children}</main>
         </PopUpWrapper>
- 
+        <Analytics />
+        
       </body>
     </html>
   )
