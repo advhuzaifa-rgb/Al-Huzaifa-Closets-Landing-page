@@ -93,43 +93,9 @@ export default function FormComponent() {
     setForm((prev) => ({ ...prev, fileName: f ? f.name : '' }))
   }
 
-  // Upload file to Payload's media endpoint. Returns media doc (parsed JSON) or throws.
-  const uploadToPayloadMedia = async (file) => {
-    const fd = new FormData()
-    // Payload expects the file field to be named 'file'
-    fd.append('file', file, file.name)
-
-    // If you use any auth for file uploads (not in your current setup), add headers here.
-    const resp = await fetch('/api/media', {
-      method: 'POST',
-      body: fd,
-    })
-
-    if (!resp.ok) {
-      const txt = await resp.text().catch(() => 'no-body')
-      throw new Error(`Upload failed: ${resp.status} - ${txt}`)
-    }
-
-    const mediaDoc = await resp.json()
-    return mediaDoc
-  }
-
-  // Create form response in Payload
-  const createFormResponse = async (payload) => {
-    // payload is a plain object with fields matching the collection
-    const resp = await fetch('/api/form-responses', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-
-    const data = await resp.json()
-    if (!resp.ok) {
-      const err = data?.message || data?.error || 'Create failed'
-      throw new Error(err)
-    }
-    return data
-  }
+  // Instead of uploading directly to Payload from the browser (which requires auth),
+  // POST the full multipart form (fields + file) to our server endpoint `/api/form`.
+  // The server will forward the file to Payload using server-side credentials.
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -139,36 +105,33 @@ export default function FormComponent() {
     const fullPhone = form.phone.replace(/\s+/g, '')
 
     try {
-      let mediaDoc = null
+      // Build a multipart FormData and POST it to our server route which handles
+      // uploads and creates server-side (no API key required in the browser).
+      const fd = new FormData()
+      fd.append('name', form.name.trim())
+      fd.append('email', form.email.trim())
+      fd.append('phone', fullPhone)
+      fd.append('country', form.country)
+      fd.append('areaOfInterest', (form.areaOfInterest || '').trim())
+      fd.append('message', (form.message || '').trim())
+      if (fileObj) fd.append('file', fileObj, fileObj.name)
 
-      // 1) If there's a file, upload it first to Payload's /api/media
-      if (fileObj) {
-        try {
-          mediaDoc = await uploadToPayloadMedia(fileObj)
-        } catch (err) {
-          console.error('Media upload failed', err)
-          setMessage({ type: 'error', text: 'File upload failed. Please try again.' })
-          setLoading(false)
-          return
-        }
+      const resp = await fetch('/api/form', {
+        method: 'POST',
+        body: fd,
+      })
+
+      let respJson = null
+      try {
+        respJson = await resp.json()
+      } catch (e) {
+        respJson = null
       }
 
-      // 2) Build create payload for the collection
-      const createPayload = {
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: fullPhone,
-        country: form.country,
-        areaOfInterest: (form.areaOfInterest || '').trim(),
-        message: (form.message || '').trim(),
-        fileName: form.fileName || mediaDoc?.filename || '',
+      if (!resp.ok) {
+        const errMsg = respJson?.error || `Submit failed (${resp.status})`
+        throw new Error(errMsg)
       }
-
-      if (mediaDoc && mediaDoc.id) {
-        createPayload.attachment = mediaDoc.id
-      }
-
-      const created = await createFormResponse(createPayload)
 
       setMessage({ type: 'success', text: 'Form submitted successfully!' })
 
